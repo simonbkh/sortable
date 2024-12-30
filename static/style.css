@@ -1,0 +1,129 @@
+/* Basic reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Table header styling */
+thead {
+    background-color: #1583b6;
+    color: white;
+    text-align: left;
+}
+
+th {
+    padding: 12px 15px;
+}
+
+/* Table row styling */
+tbody tr {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternating row colors */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for rows */
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Table cell styling */
+td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Column widths */
+th:nth-child(1), td:nth-child(1) {
+    width: 60px;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 150px;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 200px;
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 150px;
+}
+
+th:nth-child(5), td:nth-child(5) {
+    width: 100px;
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 100px;
+}
+
+th:nth-child(7), td:nth-child(7) {
+    width: 100px;
+}
+
+th:nth-child(8), td:nth-child(8) {
+    width: 100px;
+}
+
+th:nth-child(9), td:nth-child(9) {
+    width: 200px;
+}
+
+th:nth-child(10), td:nth-child(10) {
+    width: 150px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    th, td {
+        padding: 10px;
+    }
+
+    table {
+        border: 0;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        display: block;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    tbody td {
+        display: block;
+        text-align: right;
+        padding: 10px;
+    }
+
+    tbody td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 120px;
+    }
+}
