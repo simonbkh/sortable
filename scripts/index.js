@@ -12,25 +12,33 @@ async function init() {
 }
 const displayHeroes = (page = 1) => {
     // const heroesOnPage = Array.from(document.getElementsByTagName('tr'))
+   
     tbody.innerHTML = ""
     const obj = getParams()
+    //search 
+    let  filteredData = data.filter((ele) => {
+        let n = ele["name"];
+        return n.includes(obj.searchResult);
+    });
+
     const start = (obj.heroesCount * obj.pageNumber) - obj.heroesCount
     const end = obj.heroesCount * obj.pageNumber
-    console.log(data[0].powerstats);
-
-    for (let i = start; i < end; i++) {
+    for (let i = start; i < end || data.length ; i++) {
+        if (i=== filteredData.length -2 ) {
+            break
+        }
         const tr = document.createElement('tr')
         tr.innerHTML = `
-        <td><img src="${data[i].images.xs}"><src></td>
-        <td>${data[i].name}</td>
-        <td>${data[i].biography.fullName}</td>
-        <td> <pre>${Object.entries(data[i].powerstats).map(([key, value]) => `${key}: ${value}`).join('\n')}</pre></td>
-        <td>${data[i].appearance.race}</td>
-        <td>${data[i].appearance.gender}</td>
-        <td>${data[i].appearance.height}</td>
-        <td>${data[i].appearance.weight}</td>
-        <td>${data[i].biography.placeOfBirth}</td>
-        <td>${data[i].biography.alignment}</td>`
+        <td><img src="${filteredData[i].images.xs}"><src></td>
+        <td>${filteredData[i].name}</td>
+        <td>${filteredData[i].biography.fullName}</td>
+        <td> <pre>${Object.entries(filteredData[i].powerstats).map(([key, value]) => `${key}: ${value}`).join('\n')}</pre></td>
+        <td>${filteredData[i].appearance.race}</td>
+        <td>${filteredData[i].appearance.gender}</td>
+        <td>${filteredData[i].appearance.height}</td>
+        <td>${filteredData[i].appearance.weight}</td>
+        <td>${filteredData[i].biography.placeOfBirth}</td>
+        <td>${filteredData[i].biography.alignment}</td>`
       
         tbody.appendChild(tr)
 
@@ -39,8 +47,7 @@ const displayHeroes = (page = 1) => {
 }
 
 select.addEventListener('click', displayHeroes)
-search.addEventListener('keydown', displayHeroes)
-
+search.addEventListener('keyup', displayHeroes)
 
 const getParams = () => {
     const elements = Array.from(document.querySelectorAll('[data-input]'));
