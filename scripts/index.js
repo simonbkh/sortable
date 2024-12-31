@@ -26,7 +26,7 @@ const displayHeroes = (page = 1) => {
         <td><img src="${data[i].images.xs}"><src></td>
         <td>${data[i].name}</td>
         <td>${data[i].biography.fullName }</td>
-        <td>${data[i].name}</td>
+        <td> <pre>${Object.entries(data[i].powerstats).map(([key, value]) => `${key}: ${value}`).join('\n')}</pre></td>
         <td>${data[i].appearance.race}</td>
         <td>${data[i].appearance.gender}</td>
         <td>${data[i].appearance.height}</td>

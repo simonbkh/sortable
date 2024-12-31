@@ -102,10 +102,15 @@ thead {
     z-index: 99;
 }
 
-th, td {
+th,
+td {
     padding: 12px;
     text-align: left;
     border: 1px solid var(--border-color);
+}
+
+pre{
+    font-family: Arial, sans-serif;
 }
 
 th {
