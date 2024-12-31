@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sortable</title>
     <link rel="stylesheet" href="/static/style.css">
-    <script src="/scripts/fetch.js" type="module"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Quicksand:wght@300..700&family=Rubik+Vinyl&display=swap"
+        rel="stylesheet">
+    <title>Sortable</title>
 </head>
+
 <body>
-    <table>
-        <thead>
-            <th>Icon</th>
-            <th>Name</th>
-            <th>Full Name </th>
-            <th>Powerstats</th>
-            <th>Race</th>
-            <th>Gender</th>
-            <th>Height</th>
-            <th>Weight</th>
-            <th>Place Of Birth</th>
-            <th>Alignment</th>
-        </thead>
-    </table>
+    <nav>
+        <h1>SuperHeroes</h1>
+        <input type="search"  data-input = "true" class="searchBox" placeholder="Search...">
+        <select class="itemCount" data-input = "true">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="all">All</option>
+        </select>
+        <div class="pagination">
+            <button class="prevButton">&lt;</button>
+            <span class="curentPage" data-input = "true">6</span>
+            <button class="nextbutton">&gt;</button>
+        </div>
+    </nav>
+    <main>
+        <table>
+            <thead>
+                <th>Icon</th>
+                <th>Name</th>
+                <th>Full Name</th>
+                <th>Powerstats</th>
+                <th>Race</th>
+                <th>Gender</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Place Of Birth</th>
+                <th>Alignment</th>
+            </thead>
+            <tbody>
+
+            </tbody id="body">
+
+        </table>
+    </main>
+
+    <script src="/scripts/index.js" type="module">
+    </script>
 </body>
+
 </html>

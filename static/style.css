@@ -1,129 +1,158 @@
-/* Basic reset and box-sizing */
+:root {
+    --primary-bg: #f4f4f4;
+    --nav-bg: white;
+    --border-color: #ddd;
+    --hover-color: #f1f1f1;
+    --nav-height: 70px;
+    --spacing: 20px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-bg);
+    padding-top: calc(var(--nav-height) + var(--spacing));
 }
 
-/* Table styling */
-table {
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Rubik Vinyl", cursive;
+    background-color: var(--nav-bg);
+    padding: 15px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    height: var(--nav-height);
+    z-index: 100;
 }
 
-/* Table header styling */
-thead {
-    background-color: #1583b6;
-    color: white;
-    text-align: left;
+nav h1 {
+    font-size: 1.6rem;
+    color: #333;
 }
 
-th {
-    padding: 12px 15px;
-}
-
-/* Table row styling */
-tbody tr {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Alternating row colors */
-tbody tr:nth-child(even) {
+.searchBox {
+    flex: 0 1 40%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
     background-color: #f9f9f9;
 }
 
-/* Hover effect for rows */
-tbody tr:hover {
-    background-color: #f1f1f1;
+.itemCount {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--nav-bg);
+    color: #333;
 }
 
-/* Table cell styling */
-td {
-    padding: 12px 15px;
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav .curentPage {
+    font-family: 'Roboto', sans-serif;
+}
+
+.pagination button {
+    background-color: #eee;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pagination button:hover {
+    background-color: #ddd;
+}
+
+.pageNumber {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: var(--nav-bg);
+}
+
+thead {
+    position: sticky;
+    top: var(--nav-height);
+    background-color: #f2f2f2;
+    z-index: 99;
+}
+
+th, td {
+    padding: 12px;
     text-align: left;
+    border: 1px solid var(--border-color);
 }
 
-/* Column widths */
-th:nth-child(1), td:nth-child(1) {
-    width: 60px;
+th {
+    font-weight: bold;
 }
 
-th:nth-child(2), td:nth-child(2) {
-    width: 150px;
+img {
+    width: 50px;
+    /* height: 50px; */
+    display: block;
+    margin: auto;
 }
 
-th:nth-child(3), td:nth-child(3) {
-    width: 200px;
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-th:nth-child(4), td:nth-child(4) {
-    width: 150px;
+tr:hover {
+    background-color: var(--hover-color);
 }
 
-th:nth-child(5), td:nth-child(5) {
-    width: 100px;
+.powerstats {
+    white-space: pre-wrap;
 }
 
-th:nth-child(6), td:nth-child(6) {
-    width: 100px;
-}
-
-th:nth-child(7), td:nth-child(7) {
-    width: 100px;
-}
-
-th:nth-child(8), td:nth-child(8) {
-    width: 100px;
-}
-
-th:nth-child(9), td:nth-child(9) {
-    width: 200px;
-}
-
-th:nth-child(10), td:nth-child(10) {
-    width: 150px;
-}
-
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    th, td {
-        padding: 10px;
+    nav {
+        flex-wrap: wrap;
+        padding: 10px 20px;
+        height: auto;
     }
 
-    table {
-        border: 0;
+    .searchBox {
+        flex: 0 1 100%;
+        margin: 10px 0;
+    }
+
+    .pagination {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    body {
+        padding-top: 140px;
     }
 
     thead {
-        display: none;
-    }
-
-    tbody tr {
-        display: block;
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 10px;
-    }
-
-    tbody td {
-        display: block;
-        text-align: right;
-        padding: 10px;
-    }
-
-    tbody td:before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: inline-block;
-        width: 120px;
+        top: 140px;
     }
 }
