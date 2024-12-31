@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -29,21 +30,19 @@ nav {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     height: var(--nav-height);
-    z-index: 100;
 }
 
 nav h1 {
-    font-size: 1.6rem;
+    font-size: 24px;
     color: #333;
 }
 
 .searchBox {
     flex: 0 1 40%;
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 16px;
     border: 1px solid var(--border-color);
     border-radius: 20px;
     background-color: #f9f9f9;
@@ -51,7 +50,7 @@ nav h1 {
 
 .itemCount {
     padding: 10px 15px;
-    font-size: 1rem;
+    font-size: 16px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background-color: var(--nav-bg);
@@ -73,7 +72,7 @@ nav .curentPage {
     border: 1px solid var(--border-color);
     border-radius: 4px;
     padding: 8px 12px;
-    font-size: 1rem;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
@@ -83,23 +82,27 @@ nav .curentPage {
 }
 
 .pageNumber {
-    font-size: 1rem;
+    font-size: 16px;
     color: #333;
     font-weight: bold;
 }
 
 table {
-    width: 100%;
+    width: 90%;
+    margin: 20px auto;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
     background-color: var(--nav-bg);
 }
 
-thead {
+thead, th {
     position: sticky;
     top: var(--nav-height);
     background-color: #f2f2f2;
     z-index: 99;
+    /* background-color: white; */
+    border: 1px, solid, gray;
+    font-weight: bold;
 }
 
 th, td {
@@ -108,13 +111,14 @@ th, td {
     border: 1px solid var(--border-color);
 }
 
-th {
-    font-weight: bold;
+
+th:hover {
+    cursor: pointer;
 }
 
 img {
     width: 50px;
-    /* height: 50px; */
+    border-radius: 6px;
     display: block;
     margin: auto;
 }
@@ -150,6 +154,10 @@ tr:hover {
 
     body {
         padding-top: 140px;
+    }
+
+    table {
+        width: 60%;
     }
 
     thead {
