@@ -24,8 +24,8 @@ const displayHeroes = (page = 1) => {
         let n = ele["name"];
         return n.toLowerCase().includes(obj.searchResult);
     });
-    const start = (obj.heroesCount * obj.pageNumber) - obj.heroesCount < filtereddata.length ? (obj.heroesCount * obj.pageNumber) - obj.heroesCount : 0
-    const end = obj.heroesCount * obj.pageNumber <= filtereddata.length - 1 ? obj.heroesCount * obj.pageNumber : filtereddata.length
+    const start = (obj.heroesCount * page) - obj.heroesCount < filtereddata.length ? (obj.heroesCount * page) - obj.heroesCount : 0
+    const end = obj.heroesCount * page <= filtereddata.length - 1 ? obj.heroesCount * page : filtereddata.length
     // console.log(data,obj, start, end)
     for (let i = start; i < end; i++) {
         const tr = document.createElement('tr')
@@ -56,9 +56,14 @@ const getParams = () => {
 
     return { searchResult, heroesCount, pageNumber }
 }
+const updatePageAndDisplay = (page) => {
+    const elements = document.querySelectorAll('[data-input]');
+    elements[2].innerText = page;
+    displayHeroes(page);
+}
 
-select.addEventListener('click', displayHeroes)
-search.addEventListener('keyup', displayHeroes)
+select.addEventListener('click', () => updatePageAndDisplay(1))
+search.addEventListener('keyup', () => updatePageAndDisplay(1))
 pageDown.addEventListener('click', () => {
     const currentPage = getParams().pageNumber;
     const newPage = Math.max(1, currentPage - 1);
@@ -71,11 +76,6 @@ pageUp.addEventListener('click', () => {
     updatePageAndDisplay(newPage);
 })
 
-const updatePageAndDisplay = (page) => {
-    const elements = document.querySelectorAll('[data-input]');
-    elements[2].innerText = page;
-    displayHeroes(page);
-}
 
 
 // pageDown.addEventListener('click', displayHeroes((Math.max(1, getParams().pageNumber - 1))))
