@@ -1,4 +1,5 @@
 import { data, sortDirection } from "./superheroes.js"
+import { averagePowerStats } from "./tools.js"
 
 export const sortData = (column) => {
     const isAscending = sortDirection === 'A'
@@ -19,7 +20,7 @@ export const sortData = (column) => {
                 valueA = a.appearance.gender; valueB = b.appearance.gender
                 break
             case 'height':
-                valueA = parseInt(a.appearance.height[1].replace(/\D/g, '') || 0); valueB = parseInt(b.appearance.height[1].replace(/\D/g, '') || 0)
+                valueA = parseInt(a.appearance.height[0].replace(/\D/g, '') || 0); valueB = parseInt(b.appearance.height[0].replace(/\D/g, '') || 0)
                 break
             case 'weight':
                 valueA = parseInt(a.appearance.weight[0].replace(/\D/g, '') || 0); valueB = parseInt(b.appearance.weight[0].replace(/\D/g, '') || 0)
