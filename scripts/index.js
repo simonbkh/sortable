@@ -59,7 +59,26 @@ const getParams = () => {
 
 select.addEventListener('click', displayHeroes)
 search.addEventListener('keyup', displayHeroes)
-pageDown.addEventListener('click', displayHeroes((Math.max(1, getParams().pageNumber - 1))))
-pageUp.addEventListener('click', displayHeroes(Math.min(Math.ceil(filtereddata.length / getParams().heroesCount) , getParams().pageNumber + 1)))
+pageDown.addEventListener('click', () => {
+    const currentPage = getParams().pageNumber;
+    const newPage = Math.max(1, currentPage - 1);
+    updatePageAndDisplay(newPage);
+})
+
+pageUp.addEventListener('click', () => {
+    const currentPage = getParams().pageNumber;
+    const newPage = Math.min(Math.ceil(filtereddata.length / getParams().heroesCount), currentPage + 1);
+    updatePageAndDisplay(newPage);
+})
+
+const updatePageAndDisplay = (page) => {
+    const elements = document.querySelectorAll('[data-input]');
+    elements[2].innerText = page;
+    displayHeroes(page);
+}
+
+
+// pageDown.addEventListener('click', displayHeroes((Math.max(1, getParams().pageNumber - 1))))
+// pageUp.addEventListener('click', displayHeroes(Math.min((filtereddata.length / getParams().heroesCount) , getParams().pageNumber + 1)))
 
 addEventListener('DOMContentLoaded', init)
