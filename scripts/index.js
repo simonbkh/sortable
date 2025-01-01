@@ -12,7 +12,6 @@ async function init() {
 
 }
 const displayHeroes = (page = 1) => {
-    // const heroesOnPage = Array.from(document.getElementsByTagName('tr'))
 
     tbody.innerHTML = ""
     const obj = getParams()
@@ -20,16 +19,15 @@ const displayHeroes = (page = 1) => {
     //search 
     filtereddata = data.filter((ele) => {
         let n = ele["name"];
-        console.log(n);
         return n.toLowerCase().includes(obj.searchResult);
     });
     const start = (obj.heroesCount * obj.pageNumber) - obj.heroesCount < filtereddata.length ? (obj.heroesCount * obj.pageNumber) - obj.heroesCount : 0
-    const end = obj.heroesCount * obj.pageNumber <= filtereddata.length-1 ? obj.heroesCount * obj.pageNumber : filtereddata.length-1
-    console.log(data,obj, start, end)
+    const end = obj.heroesCount * obj.pageNumber <= filtereddata.length-1 ? obj.heroesCount * obj.pageNumber : filtereddata.length
+    // console.log(data,obj, start, end)
     for (let i = start; i < end; i++) {
         const tr = document.createElement('tr')
         tr.innerHTML = `
-        <td><img src="${data[i].images.xs}"><src></td>
+        <td><img src="${filtereddata[i].images.xs}"><src></td>
         <td>${filtereddata[i].name}</td>
         <td>${filtereddata[i].biography.fullName}</td>
         <td> <pre>${Object.entries(filtereddata[i].powerstats).map(([key, value]) => `${key}: ${value}`).join('\n')}</pre></td>
