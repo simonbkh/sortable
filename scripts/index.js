@@ -56,23 +56,23 @@ const getParams = () => {
     return { searchResult, heroesCount, pageNumber }
 }
 const updatePageAndDisplay = (page) => {
-    const elements = document.querySelectorAll('[data-input]');
-    elements[2].innerText = page;
-    displayHeroes(page);
+    const elements = document.querySelectorAll('[data-input]')
+    elements[2].innerText = page
+    displayHeroes(page)
 }
 
 select.addEventListener('click', () => updatePageAndDisplay(1))
 search.addEventListener('keyup', () => updatePageAndDisplay(1))
 pageDown.addEventListener('click', () => {
-    const currentPage = getParams().pageNumber;
-    const newPage = Math.max(1, currentPage - 1);
-    updatePageAndDisplay(newPage);
+    const currentPage = getParams().pageNumber
+    const newPage = Math.max(1, currentPage - 1)
+    updatePageAndDisplay(newPage)
 })
 
 pageUp.addEventListener('click', () => {
-    const currentPage = getParams().pageNumber;
-    const newPage = Math.min(Math.ceil(filtereddata.length / getParams().heroesCount), currentPage + 1);
-    updatePageAndDisplay(newPage);
+    const currentPage = getParams().pageNumber
+    const newPage = Math.min(Math.ceil(filtereddata.length / getParams().heroesCount), currentPage + 1)
+    updatePageAndDisplay(newPage)
 })
 
 addEventListener('DOMContentLoaded', init)
