@@ -1,4 +1,4 @@
-// import { data } from "./display.js"
+
 import { data, sortDirection } from "./superheroes.js"
 import { averagePowerStats } from "./tools.js"
 

@@ -1,13 +1,12 @@
 import { data } from "./superheroes.js"
 
-
 // gives search data and number to display and page 
 export const getParams = () => {
-    const elements = Array.from(document.querySelectorAll('[data-input]'));
+    const elements = Array.from(document.querySelectorAll('[data-input]'))
 
-    const searchResult = elements[0]?.value.trim() || ''
+    const searchResult = elements[0]?.value.toLowerCase().trim() || ''
     const heroesCount = parseInt(elements[1].value) || data.length
-    const pageNumber = parseInt(elements[2]?.value) || 1
+    const pageNumber = parseInt(elements[2].innerText) || 1
 
     return { searchResult, heroesCount, pageNumber }
 }
