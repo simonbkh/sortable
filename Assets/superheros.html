@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="superheros.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Quicksand:wght@300..700&family=Rubik+Vinyl&display=swap"
+        rel="stylesheet">
+    <title>SuperHeroes</title>
+</head>
+
+<body>
+    <nav>
+        <h1>SuperHeroes</h1>
+        <input type="search" data-input="true" class="searchBox" placeholder="Search...">
+        <div class="pagination">
+            <select class="itemCount" data-input="true">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="all">All</option>
+            </select>
+            <button class="prevButton">&lt;</button>
+            <span class="curentPage" data-input="true">6</span>
+            <button class="nextbutton">&gt;</button>
+        </div>
+    </nav>
+    <table>
+        <thead>
+            <th>Icon</th>
+            <th id="name" value="">Name</th>
+            <th id="fName" value="">Full Name</th>
+            <th id="pStats" value="">Powerstats</th>
+            <th id="race" value="">Race</th>
+            <th id="gender" value="">Gender</th>
+            <th id="height" value="">Height</th>
+            <th id="weight" value="">Weight</th>
+            <th id="pBirth" value="">Place Of Birth</th>
+            <th id="align" value="">Alignment</th>
+        </thead>
+        <tbody>
+            <tr id="body">
+            </tr>
+        </tbody>
+        <script src="../Scripts/superheroes.js" type="module"></script>
+</body>
+
+</html>
