@@ -1,9 +1,11 @@
+// import { data } from "./display.js"
 import { data, sortDirection } from "./superheroes.js"
 import { averagePowerStats } from "./tools.js"
 
 export const sortData = (column) => {
     const isAscending = sortDirection === 'A'
 
+    console.log(typeof column)
     data.sort((a, b) => {
         let valueA, valueB
         switch (column) {
@@ -38,12 +40,13 @@ export const sortData = (column) => {
                 valueA = valueB = 'n/a'
         }
 
-    //this part needs review
-    if (valueA === 'n/a' || valueB === 'n/a') {
-        return valueA === 'n/a' ? (valueB === 'n/a' ? 0 : 1) : -1;
-      }
-      
-      return (valueA > valueB ? 1 : valueA < valueB ? -1 : 0) * (isAscending ? 1 : -1);
-    
+        //this part needs review 
+        // handle missing data
+        if ((valueA === 'n/a' || valueB === 'n/a') || (valueA == ['n/a', 'n/a'] || valueB == ['n/a', 'n/a']) ) {
+            return valueA === 'n/a' ? (valueB === 'n/a' ? 0 : 1) : -1;
+        }
+
+        return (valueA > valueB ? 1 : valueA < valueB ? -1 : 0) * (isAscending ? 1 : -1);
+
     })
 }

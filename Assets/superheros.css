@@ -93,21 +93,21 @@ table {
     background-color: var(--nav-bg);
 }
 
-thead, th {
-    position: sticky;
-    top: var(--nav-height);
-    background-color: #f2f2f2;
-    z-index: 99;
-    border: 1px, solid, gray;
+thead {
     font-weight: bold;
 }
 
-th, td {
+th,
+td {
     padding: 12px;
     text-align: left;
     border: 1px solid var(--border-color);
 }
+pre {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 
+}
 
 th:hover {
     cursor: pointer;
@@ -154,10 +154,91 @@ tr:hover {
     }
 
     table {
-        width: 60%;
+        width: 80%;
     }
 
     thead {
         top: 140px;
+    }
+
+    img {
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    nav h1 {
+        font-size: 18px;
+    }
+
+    .searchBox {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .pagination button {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    table {
+        width: 90%;
+    }
+
+    img {
+        width: 30px;
+    }
+
+    th, td {
+        font-size: 14px;
+    }
+    pre {
+
+    }
+}
+
+@media (max-width: 360px) {
+    nav {
+        padding: 5px 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav h1 {
+        font-size: 16px;
+    }
+
+    .searchBox {
+        width: 100%;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .pagination button {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    img {
+        width: 20px;
     }
 }

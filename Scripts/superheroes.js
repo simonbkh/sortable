@@ -1,6 +1,7 @@
 import { sortData } from "./sort.js"
 import { displayHeroes } from "./display.js"
 
+
 export let data = []
 export let sortDirection = 'A'
 let sortColumn = 'name'
@@ -23,11 +24,8 @@ async function init() {
             ...value.appearance,
             race: value.appearance.race === '-' ? "n/a" : value.appearance.race,
             gender: value.appearance.gender === '-' ? "n/a" : value.appearance.gender,
-            height: (value.appearance.height.every(h => h === '-' || h === '0 cm')) ? 'n/a' : value.appearance.height,
-            weight: (value.appearance.weight.every(w => w === '- lb' || w === '0 kg')) ? 'n/a' : value.appearance.weight,
-
-
-
+            height: value.appearance.height.map(h => (h === '-' || h === '0 cm') ? 'n/a' : h),
+            weight: value.appearance.weight.map(w => (w === '- lb' || w === '0 kg') ? 'n/a' : w),
         },
         powerstats: Object.fromEntries(
             Object.entries(value.powerstats).map(([key, value]) => [key, value ?? 'n/a'])
