@@ -46,12 +46,6 @@ const displayHeroes = (page = 1) => {
     }
 
 }
-
-select.addEventListener('click', displayHeroes)
-search.addEventListener('keyup', displayHeroes)
-// pageDown.addEventListener('click', displayHeroes((getParams().pageNumber-1)))
-// pageUp.addEventListener('click', displayHeroes(getParams().pageNumber-1))
-
 const getParams = () => {
     const elements = Array.from(document.querySelectorAll('[data-input]'))
     // console.log(elements[2].innerText);
@@ -62,4 +56,10 @@ const getParams = () => {
 
     return { searchResult, heroesCount, pageNumber }
 }
+
+select.addEventListener('click', displayHeroes)
+search.addEventListener('keyup', displayHeroes)
+pageDown.addEventListener('click', displayHeroes((Math.max(1, getParams().pageNumber - 1))))
+pageUp.addEventListener('click', displayHeroes(Math.min(Math.ceil(filtereddata.length / getParams().heroesCount) , getParams().pageNumber + 1)))
+
 addEventListener('DOMContentLoaded', init)
