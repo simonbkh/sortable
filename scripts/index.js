@@ -48,7 +48,6 @@ const displayHeroes = (page = 1) => {
 }
 const getParams = () => {
     const elements = Array.from(document.querySelectorAll('[data-input]'))
-    // console.log(elements[2].innerText);
 
     const searchResult = elements[0]?.value.toLowerCase().trim() || ''
     const heroesCount = parseInt(elements[1].value) || data.length
@@ -75,10 +74,5 @@ pageUp.addEventListener('click', () => {
     const newPage = Math.min(Math.ceil(filtereddata.length / getParams().heroesCount), currentPage + 1);
     updatePageAndDisplay(newPage);
 })
-
-
-
-// pageDown.addEventListener('click', displayHeroes((Math.max(1, getParams().pageNumber - 1))))
-// pageUp.addEventListener('click', displayHeroes(Math.min((filtereddata.length / getParams().heroesCount) , getParams().pageNumber + 1)))
 
 addEventListener('DOMContentLoaded', init)
