@@ -1,4 +1,5 @@
 let data = []
+let filtereddata = data
 let select = document.querySelector('select')
 let search = document.querySelector('input')
 let tbody = document.querySelector('tbody')
@@ -12,34 +13,33 @@ async function init() {
 }
 const displayHeroes = (page = 1) => {
     // const heroesOnPage = Array.from(document.getElementsByTagName('tr'))
-   
+
     tbody.innerHTML = ""
     const obj = getParams()
+    
     //search 
-    let  filteredData = data.filter((ele) => {
+    filtereddata = data.filter((ele) => {
         let n = ele["name"];
-        return n.includes(obj.searchResult);
+        console.log(n);
+        return n.toLowerCase().includes(obj.searchResult);
     });
-
-    const start = (obj.heroesCount * obj.pageNumber) - obj.heroesCount
-    const end = obj.heroesCount * obj.pageNumber
-    for (let i = start; i < end || data.length ; i++) {
-        if (i=== filteredData.length -2 ) {
-            break
-        }
+    const start = (obj.heroesCount * obj.pageNumber) - obj.heroesCount < filtereddata.length ? (obj.heroesCount * obj.pageNumber) - obj.heroesCount : 0
+    const end = obj.heroesCount * obj.pageNumber <= filtereddata.length-1 ? obj.heroesCount * obj.pageNumber : filtereddata.length-1
+    console.log(data,obj, start, end)
+    for (let i = start; i < end; i++) {
         const tr = document.createElement('tr')
         tr.innerHTML = `
-        <td><img src="${filteredData[i].images.xs}"><src></td>
-        <td>${filteredData[i].name}</td>
-        <td>${filteredData[i].biography.fullName}</td>
-        <td> <pre>${Object.entries(filteredData[i].powerstats).map(([key, value]) => `${key}: ${value}`).join('\n')}</pre></td>
-        <td>${filteredData[i].appearance.race}</td>
-        <td>${filteredData[i].appearance.gender}</td>
-        <td>${filteredData[i].appearance.height}</td>
-        <td>${filteredData[i].appearance.weight}</td>
-        <td>${filteredData[i].biography.placeOfBirth}</td>
-        <td>${filteredData[i].biography.alignment}</td>`
-      
+        <td><img src="${data[i].images.xs}"><src></td>
+        <td>${filtereddata[i].name}</td>
+        <td>${filtereddata[i].biography.fullName}</td>
+        <td> <pre>${Object.entries(filtereddata[i].powerstats).map(([key, value]) => `${key}: ${value}`).join('\n')}</pre></td>
+        <td>${filtereddata[i].appearance.race}</td>
+        <td>${filtereddata[i].appearance.gender}</td>
+        <td>${filtereddata[i].appearance.height}</td>
+        <td>${filtereddata[i].appearance.weight}</td>
+        <td>${filtereddata[i].biography.placeOfBirth}</td>
+        <td>${filtereddata[i].biography.alignment}</td>`
+
         tbody.appendChild(tr)
 
     }
@@ -51,10 +51,11 @@ search.addEventListener('keyup', displayHeroes)
 
 const getParams = () => {
     const elements = Array.from(document.querySelectorAll('[data-input]'));
+    // console.log(elements[2].innerText);
 
-    const searchResult = elements[0]?.value.trim() || ''
+    const searchResult = elements[0]?.value.toLowerCase().trim() || ''
     const heroesCount = parseInt(elements[1].value) || data.length
-    const pageNumber = parseInt(elements[2]?.value) || 1
+    const pageNumber = parseInt(elements[2].innerText) || 1
 
     return { searchResult, heroesCount, pageNumber }
 }
