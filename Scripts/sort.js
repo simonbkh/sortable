@@ -39,11 +39,11 @@ export const sortData = (column) => {
         }
 
     //this part needs review
-        if (valueA === 'n/a') return 1
-        if (valueB === 'n/a') return -1
-
-        if (valueA > valueB) return isAscending ? 1 : -1
-        if (valueA < valueB) return isAscending ? -1 : 1
-        return 0
+    if (valueA === 'n/a' || valueB === 'n/a') {
+        return valueA === 'n/a' ? (valueB === 'n/a' ? 0 : 1) : -1;
+      }
+      
+      return (valueA > valueB ? 1 : valueA < valueB ? -1 : 0) * (isAscending ? 1 : -1);
+    
     })
 }

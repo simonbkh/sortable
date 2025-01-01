@@ -1,3 +1,6 @@
+import { data } from "./superheroes.js"
+
+
 // gives search data and number to display and page 
 export const getParams = () => {
     const elements = Array.from(document.querySelectorAll('[data-input]'));

@@ -12,19 +12,22 @@ async function init() {
     //this part needs review
     data = data.map(value => ({
         ...value,
-        name: value.name || 'n/a',
+        name: value.name === '-' ? "n/a" : value.name,
         biography: {
             ...value.biography,
-            fullName: value.biography.fullName || 'n/a',
-            placeOfBirth: value.biography.placeOfBirth || 'n/a',
-            alignment: value.biography.alignment || 'n/a',
+            fullName: value.biography.fullName === '' ? "n/a" : value.biography.fullName,
+            placeOfBirth: value.biography.placeOfBirth === '-' ? "n/a" : value.biography.placeOfBirth,
+            alignment: value.biography.alignment === '-' ? "n/a" : value.biography.alignment,
         },
         appearance: {
             ...value.appearance,
-            race: value.appearance.race || 'n/a',
-            gender: value.appearance.gender || 'n/a',
-            height: value.appearance.height.map(h => h || 'n/a'),
-            weight: value.appearance.weight.map(w => w || 'n/a'),
+            race: value.appearance.race === '-' ? "n/a" : value.appearance.race,
+            gender: value.appearance.gender === '-' ? "n/a" : value.appearance.gender,
+            height: (value.appearance.height.every(h => h === '-' || h === '0 cm')) ? 'n/a' : value.appearance.height,
+            weight: (value.appearance.weight.every(w => w === '- lb' || w === '0 kg')) ? 'n/a' : value.appearance.weight,
+
+
+
         },
         powerstats: Object.fromEntries(
             Object.entries(value.powerstats).map(([key, value]) => [key, value ?? 'n/a'])
